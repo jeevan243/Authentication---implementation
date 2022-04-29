@@ -17,14 +17,14 @@ export const Signin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(userData);
-    // axios
-    //   .post("http://localhost/register")
-    //   .then((res) => {
-    //     alert("User Registered successfully");
-    //   })
-    //   .catch((er) => {
-    //     alert("Something Went wrong Please try again");
-    //   });
+    axios
+      .post("http://localhost/login")
+      .then((res) => {
+        alert("User Registered successfully");
+      })
+      .catch((er) => {
+        alert("Something Went wrong Please try again");
+      });
 
     setUserData(userObj);
   };
@@ -36,7 +36,7 @@ export const Signin = () => {
           <input
             type="email"
             id="email"
-            placeholder="Email"
+            placeholder="Email or Phone"
             onChange={handleChange}
             value={userData.email}
           />

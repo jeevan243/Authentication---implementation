@@ -36,3 +36,9 @@ button,
 input[type="submit"]:hover {
   cursor: pointer;
 }
+
+#nameOrPassword{
+  margin-top: 50px;
+  width: 300px;
+  text-align: center;
+}

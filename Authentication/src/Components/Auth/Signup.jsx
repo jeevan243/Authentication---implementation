@@ -3,9 +3,8 @@ import { useState } from "react";
 
 export const Signup = () => {
   const userObj = {
-    name: "",
+    user_name: "",
     email: "",
-    mobile: "",
     password: "",
   };
   const [userData, setUserData] = useState(userObj);
@@ -18,6 +17,8 @@ export const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(userData);
+
+
     // axios
     //   .post("http://localhost/register")
     //   .then((res) => {
@@ -44,16 +45,9 @@ export const Signup = () => {
           <input
             type="email"
             id="email"
-            placeholder="Email"
+            placeholder="Email or Mobile"
             onChange={handleChange}
             value={userData.email}
-          />
-          <input
-            type="number"
-            id="mobile"
-            placeholder="Mobile"
-            onChange={handleChange}
-            value={userData.mobile}
           />
           <input
             type="Password"
