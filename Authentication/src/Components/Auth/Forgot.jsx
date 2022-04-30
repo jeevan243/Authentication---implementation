@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 export const ForgotPassword = () => {
   const navigate = useNavigate();
 
@@ -13,13 +14,15 @@ export const ForgotPassword = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.get("http://localhost/forget", { email: userData }).then((res) => {
-      if (res.data.status) {
-        navigate(`/reset/${userData}`);
-      } else {
-        alert("Please create your account");
-      }
-    });
+    axios
+      .post("https://restaro-server.herokuapp.com/forget", { email: userData })
+      .then((res) => {
+        if (res.data.status) {
+          navigate(`/reset/${userData}`);
+        } else {
+          alert("Please create your account");
+        }
+      });
   };
 
   return (

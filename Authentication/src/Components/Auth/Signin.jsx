@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const Signin = () => {
   const navigate = useNavigate();
@@ -7,6 +8,7 @@ export const Signin = () => {
     email: "",
     password: "",
   };
+
   const [userData, setUserData] = useState(userObj);
 
   const handleChange = (e) => {
@@ -16,11 +18,12 @@ export const Signin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(userData);
+    // console.log(userData);
+
     axios
-      .post("http://localhost/login")
+      .post("https://restaro-server.herokuapp.com/login", userData)
       .then((res) => {
-        alert("User Registered successfully");
+        alert("User logged In successfully");
       })
       .catch((er) => {
         alert("Something Went wrong Please try again");
@@ -34,7 +37,7 @@ export const Signin = () => {
       <div id="signupForm">
         <form onSubmit={handleSubmit}>
           <input
-            type="email"
+            type="text"
             id="email"
             placeholder="Email or Phone"
             onChange={handleChange}

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 export const ResetPassword = () => {
   const { data } = useParams();
@@ -13,17 +14,11 @@ export const ResetPassword = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // let x = userData;
-    // let payload;
-
-    // if (x.split("").includes("@")) {
-    //   payload = { email: userData, password: value };
-    // } else {
-    //   payload = { phone: userData, password: value };
-    // }
     axios
-      .patch("http://localhost/forget", { email: data, password: userData })
+      .patch("https://restaro-server.herokuapp.com/forget", {
+        email: data,
+        password: userData,
+      })
       .then((res) => {
         alert("Password Changed Successfully");
       });
@@ -34,7 +29,7 @@ export const ResetPassword = () => {
       <div id="signupForm">
         <form onSubmit={handleSubmit}>
           <input
-            type="text"
+            type="password"
             id="setPassword"
             placeholder="Please enter your passowrd"
             onChange={handleChange}
